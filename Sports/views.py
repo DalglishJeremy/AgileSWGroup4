@@ -40,6 +40,12 @@ def NewsHome(request):
 def SportsHome(request):
     return render(request, 'Sports/sports-home.html')
 
+def BaseballPage(request):
+	return render(request, 'Sports/baseball.html')
+
+def BasketballPage(request):
+	return render(request, 'Sports/basketball.html')
+
 def WeatherHome(request):
     return render(request, 'Sports/weather-home.html')
 # Create your views here.
