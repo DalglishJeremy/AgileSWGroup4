@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Sports.views import *
-
+from Sports import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', Home),
-    path('news/', NewsHome),
-    path('sports/', SportsHome),
-    path('weather/', WeatherHome)
+    path('admin/',              admin.site.urls,       name="admin"),
+    path('',                    views.Home,            name="Home"),
+    path('News/',               views.NewsHome,        name="News"),
+    path('Sports/',             views.SportsHome,      name="Sports"),
+    path('Sports/Baseball',     views.BaseballPage,    name="Baseball"),
+    path('Sports/Basketball',   views.BasketballPage,  name="Basketball"),
+    path('Weather/',            views.WeatherHome,     name="Weather")
 ]
