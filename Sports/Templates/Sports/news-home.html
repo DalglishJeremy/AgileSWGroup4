@@ -9,19 +9,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
 </head>
 <body>
-    <section class="hero is-primary">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Latest Sports News
-                </h1>
-            </div>
-        </div>
-    </section>
+    <div>
+        <form type="get" action="{% url 'News_search' %}" style="margin: 0">
+            <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+            <button id="search_submit" type="submit" >Submit</button>
+        </form>
+    </div>
     <section class="section">
         <div class="container">
             <div class="rows">
                 <div class="column is-offset-16 is-10">
+                    {% if not mylist %}
+                    <h1>
+                        No Search Results found
+                    </h1>
+                    {% else %}
                     {% for title, desc, pic, url in mylist %}
                     <div class="box">
                         <article class="media" >
@@ -41,6 +43,7 @@
                         </article>
                     </div>
                     {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -48,5 +51,4 @@
     <footer class="footer">
     </footer>
 </body>
-
 {% endblock %}
