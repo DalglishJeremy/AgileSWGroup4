@@ -1,5 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Baseball
+
+	{% for game in mlbGames %}
+	<!--
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">{{ game.home_name }} | {{ game.home_score }} </h5>
+			<br>
+			<h5 class="card-title">{{ game.away_name }} | {{ game.away_score }} </h5>
+		</div>
+	</div>
+	-->
+
+	<table class="box-score-container">
+		<tr>
+			<th>
+				<h4>{{ game.home_abbr }} vs {{ game.away_abbr }}</h4>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<h4>{{ game.home_name }} | {{ game.home_score }}</h4>
+				<h4>{{ game.away_name }} | {{ game.away_score }}</h4>
+			</td>
+		</tr>
+	</table>
+
+	{% endfor %}
+
 {% endblock %}

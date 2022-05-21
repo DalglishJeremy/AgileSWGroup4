@@ -1,7 +1,9 @@
 from sqlite3 import Time
 from time import time
 from django.shortcuts import render
+from .models import *
 from Sports.newsApi import getNews
+
 
 def Home(request):
     return render(request, 'Sports/home.html')
@@ -22,7 +24,10 @@ def SportsHome(request):
     return render(request, 'Sports/sports-home.html')
 
 def BaseballPage(request):
-	return render(request, 'Sports/baseball.html')
+	mlbGames = MlbBoxScoreData.objects.all()
+
+	return render(request, 'Sports/baseball.html',
+				{'mlbGames': mlbGames})
 
 def BasketballPage(request):
 	return render(request, 'Sports/basketball.html')
