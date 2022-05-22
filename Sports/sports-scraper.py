@@ -7,7 +7,7 @@ yesterday = datetime.today() - timedelta(1)
 
 games = Boxscores(yesterday)
 
-#gamesToday = games.games.get(yesterday);
+gamesToday = games.games.get(yesterday);
 
 yesterdayString = yesterday.strftime("%#m-%#d-%Y").split(" ")[0]
 
