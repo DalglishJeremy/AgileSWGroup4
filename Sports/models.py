@@ -11,6 +11,7 @@ class City(models.Model):
         verbose_name_plural = 'cities'
 
 class MlbBoxScoreData(models.Model):
+	game_number = models.IntegerField()
 	boxscore = models.TextField()
 	away_name = models.TextField()
 	away_abbr = models.TextField(max_length = 5)
