@@ -49,14 +49,14 @@ def Home(request):
 def NewsHome(request):
     input_value = 'null'
     context = getNews(input_value)
-    return render(request, 'Sports/news-home.html')
+    return render(request, 'Sports/news-home.html', context)
 
 def NewsHome_search(request):
     if request.method == 'GET':
         search_query = request.GET.get('search_box', None)
     
     context = getNews(search_query)
-    return render(request, 'Sports/news-home.html')
+    return render(request, 'Sports/news-home.html', context)
 
 def SportsHome(request):
     return render(request, 'Sports/sports-home.html')
