@@ -1,5 +1,4 @@
 from newsapi import NewsApiClient
-import time
 import dateutil.parser
 
 def getNews(input_value):
@@ -37,12 +36,6 @@ def getNews(input_value):
         source.append(temp['name'])
         temp = dateutil.parser.parse(art['publishedAt'])
         date.append(temp.strftime('%Y-%m-%d'))
-
-
-
-
-
-
 
 
     mylist = zip(title, desc, img, artURL, source, date)
