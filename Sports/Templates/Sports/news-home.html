@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <form type="get" action="{% url 'News_search' %}" style="margin: 0">
+        <form type="get" action="{% url 'News_search' %}" style="margin-left: 86.2%;">
             <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
             <button id="search_submit" type="submit" >Submit</button>
         </form>
@@ -22,8 +22,8 @@
             </div>
         </div>
         {% for title, desc, pic, url, source, date in mylist %}
-            {% if forloop.counter0|divisibleby:2 %} 
-            <div class="row text-center mt-5"> 
+            {% if forloop.counter0|divisibleby:2 %}
+            <div class="row text-center mt-5">
             {%  endif %}
                 <div class="col-lg-6">
                     <div class="position-relative mb-3">
@@ -38,12 +38,12 @@
                                 <p class="m-0" >{{ desc }}</p>
                         </div>
                     </div>
-                </div> 
+                </div>
         {%  if forloop.counter|divisibleby:2 or forloop.last %}
             </div><hr>
         {%  endif %}
         {%  endfor %}
-    </div><!-- container --> 
+    </div><!-- container -->
     <footer class="footer">
     </footer>
 </body>
