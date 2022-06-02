@@ -1,8 +1,8 @@
-<!--{% extends 'base.html' %}-->
+<{% extends 'base.html' %}
 	{% block content %}
 	
 	<h1>
-        Baseball Games of dd/dd/dddd
+        Baseball Games
     	</h1>
 		
 	{% for game in mlbGames %}
@@ -45,7 +45,6 @@
 	
 
 	<style type="text/css" media="screen">
-	
 	.box_scores {
   		display: grid;
   		column-gap: 0.5px;
@@ -55,15 +54,23 @@
   		padding: 5px;
   		width: 75%;
   		max-width: 500px;
+		border-radius: 10px;
   
 	}
 	.box {
-  		background-color: rgba(96, 96, 96, 0.8);
+  		background-color: rgba(210, 210, 210, 0.8);
  		border: 3px solid rgba(28, 191, 109, 0.8);
   		padding: 20px;
-  		font-size: 30px;
+  		font-size: 25px;
   		text-align: center;
+		text-shadow: 2px 2px #b7b7b7;
+		text-transform: uppercase;
    
+	}
+	.box:hover {
+  		cursor: pointer;
+  		background: var(--color, white);
+  		color: black;
 	}
 	.home_abrv{
   		grid-column: 1;
