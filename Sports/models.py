@@ -1,7 +1,17 @@
 from django.db import models
 from django.conf import settings
 
+class City(models.Model):
+    name = models.CharField(max_length=25)
+
+    def __str__(self): #show the actual city name on the dashboard
+        return self.name
+    
+    class Meta: 
+        verbose_name_plural = 'cities'
+
 class MlbBoxScoreData(models.Model):
+	game_number = models.IntegerField()
 	boxscore = models.TextField()
 	away_name = models.TextField()
 	away_abbr = models.TextField(max_length = 5)

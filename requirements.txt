@@ -1,0 +1,3 @@
+Django==4.0.4
+newsapi-python==0.2.6
+sportsipy==0.6.0

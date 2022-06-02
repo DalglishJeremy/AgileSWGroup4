@@ -1,22 +1,22 @@
 from newsapi import NewsApiClient
-import time
-
+import dateutil.parser
 
 def getNews(input_value):
-    currentDate = time.strftime("%Y-%m-%d")
+
     newsapi = NewsApiClient(api_key='fbfba5ccce3947d7987f287a603127c0')
+
+    query = None
 
     if(input_value != 'null'):
         query = input_value
-    else:
-        query = 'football OR baseball OR golf OR basketball OR Golf OR NFL OR NBA OR Hockey'
+    
 
-    all_articles = newsapi.get_everything(q=query,
-                                      from_param='2022-05-16',
-                                      to=currentDate,
+    all_articles = newsapi.get_top_headlines(q=query,
                                       language='en',
-                                      sort_by='relevancy',
-                                      page=2)
+                                      category='sports',
+                                      country='us',
+                                      page_size = 100
+                                      )
 
     articles = all_articles['articles']
     length = len(articles)
@@ -24,14 +24,20 @@ def getNews(input_value):
     title =[]
     img =[]
     artURL = []
+    source = []
+    date = []
     for i in range(length):
-        f = articles[i]
-        title.append(f['title'])
-        desc.append(f['description'])
-        img.append(f['urlToImage'])
-        artURL.append(f['url'])
+        art = articles[i]
+        title.append(art['title'])
+        desc.append(art['description'])
+        img.append(art['urlToImage'])
+        artURL.append(art['url'])
+        temp = art['source']
+        source.append(temp['name'])
+        temp = dateutil.parser.parse(art['publishedAt'])
+        date.append(temp.strftime('%Y-%m-%d'))
 
 
-    mylist = zip(title, desc, img, artURL)
+    mylist = zip(title, desc, img, artURL, source, date)
     context = {'mylist': mylist}
     return context
