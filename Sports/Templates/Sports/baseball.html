@@ -2,7 +2,7 @@
 	{% block content %}
 	
 	<h1>
-        Baseball Games
+        Yesterday's Baseball Scores
     	</h1>
 		
 	{% for game in mlbGames %}
@@ -63,15 +63,11 @@
   		padding: 20px;
   		font-size: 25px;
   		text-align: center;
-		text-shadow: 2px 2px #b7b7b7;
+		/*text-shadow: 2px 2px white;*/
 		text-transform: uppercase;
    
 	}
-	.box:hover {
-  		cursor: pointer;
-  		background: var(--color, white);
-  		color: black;
-	}
+	
 	.home_abrv{
   		grid-column: 1;
   		grid-row:1;
