@@ -7,23 +7,21 @@ from Sports.newsApi import getNews
 import requests
 from .models import City
 from .forms import CityForm
+import datetime
 
 def WeatherHome(request):
-    cities = City.objects.all()
-
+    city = ""
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=7b59b05d3e410e80c65cd3a16e85f8e1'
-
     if request.method == 'POST':
         form = CityForm(request.POST)
-        form.save()
+        if form.is_valid():
+            city = form.cleaned_data['name']
 
     form = CityForm()
-
-    weather_data = []
-
-    for city in cities:
-        city_weather = requests.get(url.format(city)).json()
-
+    city_weather = {}
+    city_req = requests.get(url.format(city))
+    if city_req.status_code == 200: # got valid city
+        city_weather = city_req.json()
         weather = {
             'city' : city,
             'temperature' : city_weather['main']['temp'],
@@ -32,14 +30,14 @@ def WeatherHome(request):
             'humidity': city_weather['main']['humidity'],
             'pressure': city_weather['main']['pressure'],
             'country': city_weather['sys']['country'],
-            'sunrise': city_weather['sys']['sunrise'],
-            'sunset': city_weather['sys']['sunset'],
+            'sunrise': datetime.datetime.fromtimestamp(city_weather['sys']['sunrise']),
+            'sunset': datetime.datetime.fromtimestamp(city_weather['sys']['sunset']),
             'windspeed': city_weather['wind']['speed']
-        }
+            }
+    else:
+        weather = {}
 
-        weather_data.append(weather)
-
-    context = {'weather_data': weather_data, 'form': form}
+    context = {'weather': weather, 'form': form}
 
     return render(request, 'Sports/weather-home.html', context)
 
