@@ -2,17 +2,14 @@
 
 {% block content %}
 
-	{% for game in mlbGames %}
-	<!--
-	<div class="card" style="width: 18rem;">
-		<div class="card-body">
-			<h5 class="card-title">{{ game.home_name }} | {{ game.home_score }} </h5>
-			<br>
-			<h5 class="card-title">{{ game.away_name }} | {{ game.away_score }} </h5>
-		</div>
-	</div>
-	-->
+	<h2>Games Played on {{ datePlayed }}</h2>
 
+	<form method = "GET">
+    	{{ form }}
+    	<input type = "submit" value = "Submit">
+	</form>
+
+	{% for game in mlbGames %}
 	<table class="box-score-container">
 		<tr>
 			<th>
