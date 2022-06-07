@@ -1,44 +1,22 @@
-<{% extends 'base.html' %}
+{% extends 'base.html' %}
 	{% block content %}
 	
-	<h1>
-        Yesterday's Baseball Scores
-    	</h1>
-		
-	{% for game in mlbGames %}
-	<!--
-	<div class="card" style="width: 18rem;">
-		<div class="card-body">
-			<h5 class="card-title">{{ game.home_name }} | {{ game.home_score }} </h5>
-			<br>
-			<h5 class="card-title">{{ game.away_name }} | {{ game.away_score }} </h5>
-		</div>
-	</div>
-	-->
-
-	<!--<table class="box-score-container">
-		<tr>
-			<th>
-				<h4>{{ game.home_abbr }} vs {{ game.away_abbr }}</h4>
-			</th>
-		</tr>
-		<tr>
-			<td>
-				<h4>{{ game.home_name }} | {{ game.home_score }}</h4>
-				<h4>{{ game.away_name }} | {{ game.away_score }}</h4>
-			</td>
-		</tr>
-	</table>
-	-->
-    
-    	<div class="box_scores">
+  <h2>Games Played on {{ datePlayed }}</h2>
+	
+  <form method = "GET">
+    	{{ form }}
+    	<input type = "submit" value = "Submit">
+	</form>	
+	
+  {% for game in mlbGames %}
+  <div class="box_scores">
 		<div class="box home_abrv">{{game.home_abbr}}</div>
 		<div class="box away_abrv">{{game.away_abbr}}</div>
 		<div class="box home_name">{{game.home_name}}</div>
 		<div class="box away_name">{{game.away_name}}</div>
 		<div class="box home_score">{{game.home_score}}</div>
 		<div class="box away_score">{{game.away_score}}</div>
-    	</div>
+  </div>
 	<hr style="clear:both;">
 
 	{% endfor %}

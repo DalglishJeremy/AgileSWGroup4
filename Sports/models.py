@@ -12,6 +12,7 @@ class City(models.Model):
 
 class MlbBoxScoreData(models.Model):
 	game_number = models.IntegerField()
+	date_played = models.TextField()
 	boxscore = models.TextField()
 	away_name = models.TextField()
 	away_abbr = models.TextField(max_length = 5)
