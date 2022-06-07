@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Sports
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sports Home</title>
+</head>
+
+<h2>Sports Homepages</h2>
+<h3> 
+<a class="text font-weight-medium text-decoration-none" href="{% url 'Baseball' %}">Baseball</a>
+</h3>
+<h3>
+<a class="text font-weight-medium text-decoration-none" href="{% url 'Basketball' %}">Basketball</a>
+</h3>
 {% endblock %}
