@@ -6,12 +6,8 @@ from .utils import *
 from Sports.newsApi import getNews
 import requests
 from .models import City
-<<<<<<< HEAD
 from .forms import CityForm, BaseballDateForm
-=======
-from .forms import CityForm
 import datetime
->>>>>>> weathercss
 
 def WeatherHome(request):
     city = ""
