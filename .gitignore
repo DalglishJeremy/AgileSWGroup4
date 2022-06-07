@@ -172,3 +172,5 @@ temp/*
 .DS_Store
 
 linuxresetmigrations.sh
+
+*.sqlite3
