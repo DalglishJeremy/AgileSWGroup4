@@ -58,6 +58,13 @@ def NewsHome_search(request):
     context = getNews(search_query)
     return render(request, 'Sports/news-home.html', context)
 
+def NewsHome_sort(request):
+    if request.method == 'GET':
+        sort_option = request.GET.get('option', None)
+
+    context = getNews(sort_option)
+    return render(request, 'Sports/news-home.html', context)
+    
 def SportsHome(request):
     return render(request, 'Sports/sports-home.html')
 
