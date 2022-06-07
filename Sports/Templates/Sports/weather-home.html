@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
-
+{% block title %}Today's Weather{% endblock %}
+{% block extra_css %}
+    <link href="../../../static/css/weather.css" type="text/css" rel="stylesheet">
+{% endblock %}
 {% block content %}
-<style>
-.form-area {
-    padding-left: 3em;
-    background-color: grey;
-}
-</style>
-<div class="row">
-    <div class="form-area col-lg-6 mt-4">
+<div class="container-fluid" style="padding: 5%;">
+    <div class="weather-search">
         <form method="POST">
             {% csrf_token %}
             <div class="input-group mb-3">
@@ -16,16 +13,30 @@
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Go</button>
             </div>
         </form>
-        <div class="contentframe col-lg-6 mt-4 justify-content-end">
-            
-            <h4>{{ weather.temperature }}° F |  {{ weather.city }}</h4>
-            <h4>Humidity: {{weather.humidity}}</h4>
-            <h4>Pressure: {{weather.pressure}}</h4>
-            <h4>Country: {{weather.country}}</h4>
-            <h4>Sunrise: {{weather.sunrise}}</h4>
-            <h4>Sunset: {{weather.sunset}}</h4>
-            <h4>Wind Speed: {{weather.windspeed}}</h4>
-            <h4>{{ weather.description }}</h4>
+    </div>
+    <div class="row">
+        <div class="weather-data col">
+            {% if weather %}
+            <h1 class="display-5">Weather Today</h1>
+            <h2>{{ weather.temperature }}° F |  {{ weather.city }}</h2>
+            <ul class="weather-info list-unstyled">
+                <li>Humidity: {{weather.humidity}}</li>
+                <li>Pressure: {{weather.pressure}}</li>
+                <li>Country: {{weather.country}}</li>
+                <li>Sunrise: {{weather.sunrise}}</li>
+                <li>Sunset: {{weather.sunset}}</li>
+                <li>Wind Speed: {{weather.windspeed}}</li>
+                <li><img src={{ weather.icon }} alt="Weather">{{ weather.description }}</li>
+            <ul>
+            {% else %}
+            <h3>Enter a City to see its Game Day weather</h3>
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if alerts %}
+            <h1 class="display-5">Alerts</h1>
+            {% else %}
+            {% endif %}
         </div>
     </div>
 </div>
