@@ -1,9 +1,13 @@
-.box-score-container{
+/*.box-score-container{
   display: inline-block;
   border: none;
   background: rgba(48,57,86,.9); 
   padding-bottom: 7px; 
   border-radius: 10px;
+<<<<<<< HEAD:Sports/Templates/main.css
+}*/
+
+=======
 }
 
 
@@ -15,3 +19,4 @@
   padding-left: 5%;
   color: whitesmoke;
 }
+>>>>>>> weathercss:static/css/main.css

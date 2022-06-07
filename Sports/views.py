@@ -6,8 +6,12 @@ from .utils import *
 from Sports.newsApi import getNews
 import requests
 from .models import City
+<<<<<<< HEAD
+from .forms import CityForm, BaseballDateForm
+=======
 from .forms import CityForm
 import datetime
+>>>>>>> weathercss
 
 def WeatherHome(request):
     city = ""
@@ -49,6 +53,22 @@ def WeatherHome(request):
 
     return render(request, 'Sports/weather-home.html', context)
 
+
+def BaseballPage(request):
+    context = {}
+    context['form'] = BaseballDateForm()
+    
+    if request.GET:
+        temp = request.GET['date_field']
+        date_string = populateBoxScores(temp)
+    else:
+        date_string = populateBoxScoresDefault()
+
+    mlbGames = MlbBoxScoreData.objects.filter(date_played=date_string)
+    context['mlbGames'] = mlbGames
+    context['datePlayed'] = date_string
+    return render(request, 'Sports/baseball.html', context)
+
 def Home(request):
     return render(request, 'Sports/home.html')
 
@@ -66,11 +86,6 @@ def NewsHome_search(request):
 
 def SportsHome(request):
     return render(request, 'Sports/sports-home.html')
-
-def BaseballPage(request):
-    populateBoxScores()
-    mlbGames = MlbBoxScoreData.objects.all()
-    return render(request, 'Sports/baseball.html', {'mlbGames': mlbGames})
 
 def BasketballPage(request):
     return render(request, 'Sports/basketball.html')

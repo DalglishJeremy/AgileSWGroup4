@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="col-6">
-                <form>
-                    <div class="form-group" type="get" action="{% url 'News_search' %}" style="float: right;">
+                <form type="get" action="{% url 'News_search' %}" style="float: right;">
+                    <div>
                         <input  class="form-control" id="search_box" type="text" name="search_box"  placeholder="Search...">
                         <button class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" id="search_submit" type="submit">Submit</button>
                     </div>
