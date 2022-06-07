@@ -1,10 +1,10 @@
 <{% extends 'base.html' %}
 	{% block content %}
 	
-	<h1>
-        Yesterday's Baseball Scores	
-    	</h1>
-
+	<form method = "GET">
+    	{{ form }}
+    	<input type = "submit" value = "Submit">
+	</form>	
 
 
 	{% for game in mlbGames %}
