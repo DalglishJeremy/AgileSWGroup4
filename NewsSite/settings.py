@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Sports',
-    'bootstrap4',
-    'bootstrap_datepicker_plus'
 ]
 
 MIDDLEWARE = [
