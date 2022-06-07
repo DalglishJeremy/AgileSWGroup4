@@ -1,29 +1,79 @@
 {% extends 'base.html' %}
-
-{% block content %}
-
-	<h2>Games Played on {{ datePlayed }}</h2>
-
-	<form method = "GET">
+	{% block content %}
+	
+  <h2>Games Played on {{ datePlayed }}</h2>
+	
+  <form method = "GET">
     	{{ form }}
     	<input type = "submit" value = "Submit">
-	</form>
-
-	{% for game in mlbGames %}
-	<table class="box-score-container">
-		<tr>
-			<th>
-				<h4>{{ game.home_abbr }} vs {{ game.away_abbr }}</h4>
-			</th>
-		</tr>
-		<tr>
-			<td>
-				<h4>{{ game.home_name }} | {{ game.home_score }}</h4>
-				<h4>{{ game.away_name }} | {{ game.away_score }}</h4>
-			</td>
-		</tr>
-	</table>
+	</form>	
+	
+  {% for game in mlbGames %}
+  <div class="box_scores">
+		<div class="box home_abrv">{{game.home_abbr}}</div>
+		<div class="box away_abrv">{{game.away_abbr}}</div>
+		<div class="box home_name">{{game.home_name}}</div>
+		<div class="box away_name">{{game.away_name}}</div>
+		<div class="box home_score">{{game.home_score}}</div>
+		<div class="box away_score">{{game.away_score}}</div>
+  </div>
+	<hr style="clear:both;">
 
 	{% endfor %}
+	
+
+	<style type="text/css" media="screen">
+	.box_scores {
+  		display: grid;
+  		column-gap: 0.5px;
+  		grid-template-columns: auto auto auto;
+  		grid-template-rows: auto auto;
+  		background-color: #1e1a1a;
+  		padding: 5px;
+  		width: 75%;
+  		max-width: 500px;
+		border-radius: 10px;
+  
+	}
+	.box {
+  		background-color: rgba(210, 210, 210, 0.8);
+ 		border: 3px solid rgba(28, 191, 109, 0.8);
+  		padding: 20px;
+  		font-size: 25px;
+  		text-align: center;
+		/*text-shadow: 2px 2px white;*/
+		text-transform: uppercase;
+   
+	}
+	
+	.home_abrv{
+  		grid-column: 1;
+  		grid-row:1;
+	}
+
+	.away_abrv{
+ 		grid-column:1;
+  	grid-row:2;
+	}
+	.home_name{
+  		grid-column:2;
+  		grid-row:1;
+	}
+	.away_name{
+  
+  	grid-column:2;
+  	grid-row:2;
+	}
+	.home_score{
+  	grid-column:3;
+  	grid-row:1;
+	}
+	.away_score{
+  	grid-column:3;
+  	grid-row:2;
+	}
+
+	</style>
 
 {% endblock %}
+
