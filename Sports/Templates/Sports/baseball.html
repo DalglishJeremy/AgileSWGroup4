@@ -1,30 +1,68 @@
-{% extends 'base.html' %}
+<{% extends 'base.html' %}
 	{% block content %}
 	
-  <h2>Games Played on {{ datePlayed }}</h2>
-	
-  <form method = "GET">
+	<form method = "GET">
     	{{ form }}
     	<input type = "submit" value = "Submit">
 	</form>	
-	
-  {% for game in mlbGames %}
-  <div class="box_scores">
-		<div class="box home_abrv">{{game.home_abbr}}</div>
-		<div class="box away_abrv">{{game.away_abbr}}</div>
-		<div class="box home_name">{{game.home_name}}</div>
-		<div class="box away_name">{{game.away_name}}</div>
-		<div class="box home_score">{{game.home_score}}</div>
-		<div class="box away_score">{{game.away_score}}</div>
-  </div>
-	<hr style="clear:both;">
 
-	{% endfor %}
+	<div class="shell">
+
+	{% for game in mlbGames %}
+
 	
+
+    		<div class="box_scores">
+			{% if game.home_score > game.away_score %}
+				<div class="box home_abrv"style="background-color:ForestGreen;">{{game.home_abbr}}</div>
+				<div class="box away_abrv">{{game.away_abbr}}</div>
+				<div class="box home_name"style="background-color:ForestGreen;">{{game.home_name}}</div>
+				<div class="box away_name">{{game.away_name}}</div>
+				<div class="box home_score"style="background-color:ForestGreen;"> {{game.home_score}}</div>
+				<div class="box away_score">{{game.away_score}}</div>
+			{% elif  game.away_score > game.home_score %}
+				<div class="box home_abrv">{{game.home_abbr}}</div>
+				<div class="box away_abrv"style="background-color:ForestGreen;">{{game.away_abbr}}</div>
+				<div class="box home_name">{{game.home_name}}</div>
+				<div class="box away_name"style="background-color:ForestGreen;">{{game.away_name}}</div>
+				<div class="box home_score">{{game.home_score}}</div>
+				<div class="box away_score" style="background-color:ForestGreen;"> {{game.away_score}}</div>
+			{% else %}
+				<div class="box home_abrv">{{game.home_abbr}}</div>
+				<div class="box away_abrv">{{game.away_abbr}}</div>
+				<div class="box home_name">{{game.home_name}}</div>
+				<div class="box away_name">{{game.away_name}}</div>
+				<div class="box home_score">{{game.home_score}}</div>
+				<div class="box away_score"> {{game.away_score}}</div>
+			{% endif %}
+
+		</div>
+
+	<hr style="clear:both;">
+			
+	{% endfor %}
+
+	</div>
+
 
 	<style type="text/css" media="screen">
+	.shell{
+  		
+		display: flex;
+  		flex-flow: row wrap;
+		align-content: flex-start;
+		justify-content: center;
+		margin:10px;
+  		box-sizing: border-box;
+  		margin-left: auto;
+  		margin-right: auto;
+		/*justify-content: space-evenly;*/
+		align-content: space-end;
+  		background: rgba(114, 186, 94, 0.05);
+  		border: 2px dashed rgba(114, 186, 94, 0.35);
+	}
 	.box_scores {
-  		display: grid;
+  		display: grid;	
   		column-gap: 0.5px;
   		grid-template-columns: auto auto auto;
   		grid-template-rows: auto auto;
@@ -37,15 +75,16 @@
 	}
 	.box {
   		background-color: rgba(210, 210, 210, 0.8);
- 		border: 3px solid rgba(28, 191, 109, 0.8);
+ 		/*border: 3px solid rgba(28, 191, 109, 0.8);*/
+		border: 3px solid rgba(30,30,30,1.0);
   		padding: 20px;
   		font-size: 25px;
   		text-align: center;
 		/*text-shadow: 2px 2px white;*/
 		text-transform: uppercase;
-   
+   		justify-content: end;
 	}
-	
+
 	.home_abrv{
   		grid-column: 1;
   		grid-row:1;
