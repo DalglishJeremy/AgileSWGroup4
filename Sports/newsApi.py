@@ -1,5 +1,6 @@
 from newsapi import NewsApiClient
 import dateutil.parser
+import operator
 
 def getNews(input_value):
 
@@ -7,7 +8,8 @@ def getNews(input_value):
 
     query = None
 
-    if(input_value != 'null'):
+    #if(input_value != 'null' or input_value != 'newest' or input_value != 'oldest'):
+    if(input_value != 'null' and input_value != 'newest' and input_value != 'oldest'):
         query = input_value
     
 
@@ -39,5 +41,13 @@ def getNews(input_value):
 
 
     mylist = zip(title, desc, img, artURL, source, date)
+
+    if(input_value == "newest"):
+        sortedList = sorted(mylist, key = operator.itemgetter(5), reverse = True)
+        mylist = sortedList
+    if(input_value == "oldest"):
+        sortedList = sorted(mylist, key = operator.itemgetter(5))
+        mylist = sortedList
+
     context = {'mylist': mylist}
     return context
