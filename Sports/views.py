@@ -7,7 +7,6 @@ from Sports.newsApi import getNews
 import requests
 from .models import City
 from .forms import CityForm, BaseballDateForm
-from .forms import CityForm
 import datetime
 
 def WeatherHome(request):
