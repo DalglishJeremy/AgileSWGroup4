@@ -70,11 +70,12 @@ def populateBoxScores(date):
 
 
 def cityToTeam(city):
-	teamname = ""
+	teamname = {}
 	dat = json.load(open("static\data\mlbteammappings.json"))
 	for team in dat["team_all"]["queryResults"]["row"]:
 		if team["city"] == city.capitalize():
-			teamname = team["name"]
+			teamname['name'] = team["name"]
+			teamname['abbr'] = team["name_abbrev"]
 		
 	
 	return teamname

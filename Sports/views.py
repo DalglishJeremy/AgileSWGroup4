@@ -20,7 +20,9 @@ def WeatherHome(request):
             weather = fetchWeather(city)
             ctx['weather'] = weather['weather']
             ctx['alerts'] = weather['alerts']
-            ctx['team'] = cityToTeam(city).lower()
+            team = cityToTeam(city)
+            ctx['team'] = team['name'].lower()
+            ctx['abbr'] = team['abbr'] # for later to grab team logo png
     
     return render(request, 'Sports/weather-home.html', ctx)
 

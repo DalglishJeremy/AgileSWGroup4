@@ -7,6 +7,7 @@ def cityToTeam(city):
 	for team in dat["team_all"]["queryResults"]["row"]:
 		if team["city"] == city.capitalize():
 			teamname = team["name"]
+			teamname['abbr'] = team["name_abbrev"]
 		
 	
 	return teamname
