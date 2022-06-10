@@ -12,7 +12,7 @@ from Sports.API.weatherAPI import fetchWeather
 
 def WeatherHome(request):
     dat = {}
-    ctx = {'weather': dat, 'form': CityForm(), 'alert':{}}
+    ctx = {'weather': dat, 'form': CityForm(), 'alert':{}, 'team':""}
     if request.method == 'POST':
         ctx['form'] = CityForm(request.POST)
         if ctx['form'].is_valid():
@@ -20,7 +20,8 @@ def WeatherHome(request):
             weather = fetchWeather(city)
             ctx['weather'] = weather['weather']
             ctx['alerts'] = weather['alerts']
-
+            ctx['team'] = cityToTeam(city).lower()
+    
     return render(request, 'Sports/weather-home.html', ctx)
 
 
