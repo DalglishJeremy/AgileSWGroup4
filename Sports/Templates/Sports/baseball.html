@@ -1,4 +1,5 @@
 <{% extends 'base.html' %}
+	{% load static %}
 	{% block content %}
 	
 	<form method = "GET">
@@ -9,11 +10,10 @@
 	<div class="shell">
 
 	{% for game in mlbGames %}
-
-	
-
     		<div class="box_scores">
 			{% if game.home_score > game.away_score %}
+				<img class="box logo" src="{% static game.away_logo_path %}">
+				<img class="box logo"" src="{% static game.home_logo_path %}">
 				<div class="box home_abrv"style="background-color:ForestGreen;">{{game.home_abbr}}</div>
 				<div class="box away_abrv">{{game.away_abbr}}</div>
 				<div class="box home_name"style="background-color:ForestGreen;">{{game.home_name}}</div>
@@ -21,6 +21,8 @@
 				<div class="box home_score"style="background-color:ForestGreen;"> {{game.home_score}}</div>
 				<div class="box away_score">{{game.away_score}}</div>
 			{% elif  game.away_score > game.home_score %}
+				<img class="box logo" src="{% static game.away_logo_path %}">
+				<img class="box logo" src="{% static game.home_logo_path %}">
 				<div class="box home_abrv">{{game.home_abbr}}</div>
 				<div class="box away_abrv"style="background-color:ForestGreen;">{{game.away_abbr}}</div>
 				<div class="box home_name">{{game.home_name}}</div>
@@ -28,6 +30,8 @@
 				<div class="box home_score">{{game.home_score}}</div>
 				<div class="box away_score" style="background-color:ForestGreen;"> {{game.away_score}}</div>
 			{% else %}
+				<img class="box logo" src="{% static game.away_logo_path %}">
+				<img class="box logo" src="{% static game.home_logo_path %}">
 				<div class="box home_abrv">{{game.home_abbr}}</div>
 				<div class="box away_abrv">{{game.away_abbr}}</div>
 				<div class="box home_name">{{game.home_name}}</div>
@@ -35,7 +39,6 @@
 				<div class="box home_score">{{game.home_score}}</div>
 				<div class="box away_score"> {{game.away_score}}</div>
 			{% endif %}
-
 		</div>
 
 	<hr style="clear:both;">
@@ -46,8 +49,8 @@
 
 
 	<style type="text/css" media="screen">
+	
 	.shell{
-  		
 		display: flex;
   		flex-flow: row wrap;
 		align-content: flex-start;
@@ -71,7 +74,10 @@
   		width: 75%;
   		max-width: 500px;
 		border-radius: 10px;
-  
+	}
+	.logo{
+		max-width:100%;
+		max-height:100%;
 	}
 	.box {
   		background-color: rgba(210, 210, 210, 0.8);
