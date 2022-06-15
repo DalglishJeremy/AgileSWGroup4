@@ -20,10 +20,24 @@
                 <form type="get" action="{% url 'News_search' %}" style="float: right;">
                     <div>
                         <input  class="form-control" id="search_box" type="text" name="search_box"  placeholder="Search...">
-                        <button class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" id="search_submit" type="submit">Submit</button>
+                        <button class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" id="search_submit" type="submit" style="background-color: #28a745;">Submit</button>
                     </div>
                 </form>
             </div>
+            <div class="col-6">
+                <label for="sort-by-select" class="sort-by-label">
+                  <span class="sort-by-title">Sort By: </span>
+                  <div class="tb-select-wrapper sort-dropdown">
+                    <form type="get" action="{% url 'News_sort' %}">
+                      <select autocomplete="off" class="form-select" id="option" name="option" onchange="this.form.submit()">
+                        <option>-Select sorting by latest/oldest-</option>
+                        <option value="newest" data-track="Newest First">Newest First</option>
+                        <option value="oldest" data-track="Oldest First">Oldest First</option>
+                      </select>
+                    </form>
+                  </div>
+                </label>
+              </div>
         </div>
         {% for title, desc, pic, url, source, date in mylist %}
             {% if forloop.counter0|divisibleby:2 %}
@@ -34,7 +48,7 @@
                         <img class="img w-100 h-100"  src="{{ pic }}" style="object-fit: cover;">
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
+                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" style="background-color: #28a745;"
                                     href="{{url}}">{{source}}</a>
                                 <a class="text-body"><small>{{date}}</small></a>
                             </div>
