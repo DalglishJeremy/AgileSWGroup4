@@ -3,61 +3,84 @@
 {% block content %}
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sports Home</title>
-</head>
-
-<h2>Front Row Sports Homepage</h2>
-<h3> 
-<a class="text font-weight-medium text-decoration-none" href="{% url 'Sports' %}">Sports</a>
-</h3>
-<h3>
-<a class="text font-weight-medium text-decoration-none" href="{% url 'Basketball' %}">Basketball</a>
-</h3>
-<h3>
-<a class="text font-weight-medium text-decoration-none" href="{% url 'News' %}">News</a>
-</h3>
-<h3>
-<a class="text font-weight-medium text-decoration-none" href="{% url 'Weather' %}">Weather</a>
-</h3>
-
-
-<body>
-    <div class="container" style="padding-top: 5%;">
-        <div class="row">
-            <div class="col-6">
-                <div class="section-title">
-                    <h4 class="m-0 text-uppercase font-weight-bold">Latest Sports News</h4>
-                    <a class="text-secondary font-weight-medium text-decoration-none" href="{% url 'News' %}">View All</a>
-                </div>
-            </div>
+    <style>
+    h1 {
+      font-family: sans-serif;
+      margin: 100px auto;
+      color: #1faa1f;
+      text-align: center;
+      font-size: 30px;
+      max-width: 700px;
+      position: relative;
+    }
+    h1:before {
+      content: "";
+      display: block;
+      width: 130px;
+      height: 5px;
+      background: #191970;
+      left: 0;
+      top: 50%;
+      position: absolute;
+    }
+    h1:after {
+      content: "";
+      display: block;
+      width: 130px;
+      height: 5px;
+      background: #191970;
+      right: 0;
+      top: 50%;
+      position: absolute;
+    }
+  </style>
+  </head>
+<body> 
+    <div style="text-align: center;">
+    <img src = "https://cdn.discordapp.com/attachments/974390914409709630/982053715886354514/AgileSWGroup4Logo.png" alt="no logo"
+        width="240"
+        height="140"/>
+        <figcaption font-size="21"> Front Row Home Page</figcaption>
+    </div>
+    <div id="banner" style="overflow: hidden;justify-content:space-around;">
+        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
+            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986407014714458152/Weather_page_screenshot.png" alt="No Picture:("
+            width="400"
+            height="200" />
+            <figcaption>Front Row Sports</figcaption>
         </div>
-        {% for title, desc, pic, url, source, date in mylist %}
-            {% if forloop.counter0|divisibleby:2 %}
-            <div class="row text-center mt-5">
-            {%  endif %}
-                <div class="col-lg-6">
-                    <div class="position-relative mb-3">
-                        <img class="img w-100 h-100"  src="{{ pic }}" style="object-fit: cover;">
-                        <div class="bg-white border border-top-0 p-4">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="{{url}}">{{source}}</a>
-                                <a class="text-body"><small>{{date}}</small></a>
-                            </div>
-                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{url}}">{{ title }}</a>
-                                <p class="m-0" >{{ desc }}</p>
-                        </div>
-                    </div>
-                </div>
-        {%  if forloop.counter|divisibleby:2 or forloop.last %}
-            </div><hr>
-        {%  endif %}
-        {%  endfor %}
-    </div><!-- container -->
-    <footer class="footer">
-    </footer>
+        
+        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
+            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986419399491727450/beisbol.jpg" alt="No Picture:("
+            width="400"
+            height="200" />
+            <figcaption> Front Row Baseball</figcaption>
+        </div>
+        
+        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
+            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986419399164563486/basketbol_2.jpg" alt="No Picture:("
+            width="350"
+            height="200" />
+            <figcaption> Front Row Basketball</figcaption>
+        </div>
+        
+        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
+            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986417903412854854/Screenshot_115.png" alt="No Picture:("
+            width="400"
+            height="200" />
+            <figcaption> Front Row News </figcaption>
+        </div>
+        
+        <div class="" style="max-width: 20%;max-height: 50%;display: inline-block;">
+            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986407014714458152/Weather_page_screenshot.png" alt="No Picture:("
+            width="400"
+            height="200" />
+            <figcaption>   Front Row Weather</figcaption>
+        </div>
+    </div>
+
+    <h1> Welcome to Front Row Sports! </h1>
+
 </body>
+
 {% endblock %}
