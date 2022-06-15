@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from sportsipy.mlb.boxscore import Boxscores
-
+import json
 from .models import *
 
 def populateBoxScoresDefault():
@@ -69,3 +69,15 @@ def populateBoxScores(date):
 			gameCounter += 1
 
 	return dateString
+
+
+def cityToTeam(city):
+	teamname = {}
+	dat = json.load(open("static\data\mlbteammappings.json"))
+	for team in dat["team_all"]["queryResults"]["row"]:
+		if team["city"] == city.capitalize():
+			teamname['name'] = team["name"]
+			teamname['abbr'] = team["name_abbrev"]
+		
+	
+	return teamname

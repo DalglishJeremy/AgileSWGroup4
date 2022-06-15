@@ -20,7 +20,9 @@ def fetchWeather(in_city):
             'country': city_weather['sys']['country'],
             'sunrise': datetime.datetime.fromtimestamp(city_weather['sys']['sunrise']),
             'sunset': datetime.datetime.fromtimestamp(city_weather['sys']['sunset']),
-            'windspeed': city_weather['wind']['speed']
+            'windspeed': city_weather['wind']['speed'],
+            'coordlat': city_weather['coord']['lat'],
+            'coordlon': city_weather['coord']['lon']
             }
         # alert_req = requests.get(alerts_url.format(city_weather['coord']['lat'], city_weather['coord']['lon']))
         # if alert_req == 200:

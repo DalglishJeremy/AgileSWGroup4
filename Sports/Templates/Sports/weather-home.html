@@ -33,6 +33,12 @@
             {% endif %}
         </div>
         <div class="col">
+            <div>
+                <iframe src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat={{ weather.coordlat }}&lon={{ weather.coordlon }}&zoom=5" 
+                frameborder="0"
+                width="500" height="500"
+                ></iframe>
+            </div>
             {% if alerts %}
             <h1 class="display-5">Alerts</h1>
             {% else %}
@@ -40,4 +46,14 @@
         </div>
     </div>
 </div>
+{% if team %}
+<div class="tickets-box container-fluid text-white">
+    <div class="tickets text-center">
+        <h1>View Tickets for the {{ team|capfirst }}</h1>
+        <a href="https://www.mlb.com/{{ team }}/tickets/single-game-tickets" target="_blank">{{ weather.city }} {{ team|capfirst }}</a>
+    </div>
+</div>
+
+{% else %}
+{% endif %}
 {% endblock %}
