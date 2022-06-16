@@ -2,29 +2,42 @@
 	{% load static %}
 	{% block content %}
 	
+	<body>
+	<style>
+
+	body{
+		background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/03/Nice-baseball-fields-wallpaper-background.jpg");
+		height:500px;
+
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	</style>	
+		
+
 	<form method = "GET">
     	{{ form }}
     	<input type = "submit" value = "Submit">
 	</form>	
+
+	
 
 	<div class="shell">
 
 	{% for game in mlbGames %}
     		<div class="box_scores">
 			{% if game.home_score > game.away_score %}
-				<img class="box logo" src="{% static game.away_logo_path %}">
 				<img class="box logo"" src="{% static game.home_logo_path %}">
-				<div class="box home_abrv"style="background-color:ForestGreen;">{{game.home_abbr}}</div>
-				<div class="box away_abrv">{{game.away_abbr}}</div>
+				<img class="box logo" src="{% static game.away_logo_path %}">
 				<div class="box home_name"style="background-color:ForestGreen;">{{game.home_name}}</div>
 				<div class="box away_name">{{game.away_name}}</div>
 				<div class="box home_score"style="background-color:ForestGreen;"> {{game.home_score}}</div>
 				<div class="box away_score">{{game.away_score}}</div>
 			{% elif  game.away_score > game.home_score %}
-				<img class="box logo" src="{% static game.away_logo_path %}">
 				<img class="box logo" src="{% static game.home_logo_path %}">
-				<div class="box home_abrv">{{game.home_abbr}}</div>
-				<div class="box away_abrv"style="background-color:ForestGreen;">{{game.away_abbr}}</div>
+				<img class="box logo" src="{% static game.away_logo_path %}">	    
 				<div class="box home_name">{{game.home_name}}</div>
 				<div class="box away_name"style="background-color:ForestGreen;">{{game.away_name}}</div>
 				<div class="box home_score">{{game.home_score}}</div>
@@ -32,8 +45,6 @@
 			{% else %}
 				<img class="box logo" src="{% static game.away_logo_path %}">
 				<img class="box logo" src="{% static game.home_logo_path %}">
-				<div class="box home_abrv">{{game.home_abbr}}</div>
-				<div class="box away_abrv">{{game.away_abbr}}</div>
 				<div class="box home_name">{{game.home_name}}</div>
 				<div class="box away_name">{{game.away_name}}</div>
 				<div class="box home_score">{{game.home_score}}</div>
@@ -46,51 +57,62 @@
 	{% endfor %}
 
 	</div>
-
+	</body>
 
 	<style type="text/css" media="screen">
-	
 	.shell{
 		display: flex;
-  		flex-flow: row wrap;
-		align-content: flex-start;
-		justify-content: center;
-		margin:10px;
-  		box-sizing: border-box;
-  		margin-left: auto;
-  		margin-right: auto;
-		/*justify-content: space-evenly;*/
-		align-content: space-end;
-  		background: rgba(114, 186, 94, 0.05);
-  		border: 2px dashed rgba(114, 186, 94, 0.35);
+		align-items: center;
+  		flex-wrap: wrap;
+		justify-content: space-around;
+		align-content: space-between;
+		width:100%;
+		height: 100%;
+		flex-shrink:1;
+		flex-grow:1;
+		position: absolute;			
+
+	}
+	@media (max-width: 800px) {
+  		.shell {
+    		flex: 100%;
+		max-width: 50%;
+		max-height: 50%;
+  		}
 	}
 	.box_scores {
-  		display: grid;	
-  		column-gap: 0.5px;
-  		grid-template-columns: auto auto auto;
+		display: grid;
+		margin: 10px;
+		width:30vw;
+		max-width: 500px;
+		height: 20vw;	
+		grid-template-columns: auto auto auto;
   		grid-template-rows: auto auto;
   		background-color: #1e1a1a;
-  		padding: 5px;
-  		width: 75%;
-  		max-width: 500px;
-		border-radius: 10px;
-	}
-	.logo{
-		max-width:100%;
-		max-height:100%;
+		padding: 5px;
+  		border-radius: 10px;
+		flex: 25%;
+		postion: absolute;
+
 	}
 	.box {
   		background-color: rgba(210, 210, 210, 0.8);
- 		/*border: 3px solid rgba(28, 191, 109, 0.8);*/
-		border: 3px solid rgba(30,30,30,1.0);
+ 		border: 3px solid rgba(30,30,30,1.0);
   		padding: 20px;
   		font-size: 25px;
   		text-align: center;
-		/*text-shadow: 2px 2px white;*/
 		text-transform: uppercase;
-   		justify-content: end;
+   		justify-content: center;
+		flex:25%;
+		
+	}
+	.logo{
+		width: 150px;
+		height: 150px;
+		flex:15%;
 	}
 
+	/*
 	.home_abrv{
   		grid-column: 1;
   		grid-row:1;
@@ -98,24 +120,27 @@
 
 	.away_abrv{
  		grid-column:1;
-  	grid-row:2;
-	}
+  		grid-row:2;
+	}*/
 	.home_name{
   		grid-column:2;
   		grid-row:1;
+		flex:15%;
 	}
 	.away_name{
-  
-  	grid-column:2;
-  	grid-row:2;
+  		grid-column:2;
+  		grid-row:2;
+		flex:15%;
 	}
 	.home_score{
-  	grid-column:3;
-  	grid-row:1;
+  		grid-column:3;
+  		grid-row:1;
+		flex:15%;
 	}
 	.away_score{
-  	grid-column:3;
-  	grid-row:2;
+  		grid-column:3;
+  		grid-row:2;
+		flex:15%;
 	}
 
 	</style>
