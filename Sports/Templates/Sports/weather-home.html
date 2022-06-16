@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Today's Weather{% endblock %}
+{% load static %}
 {% block extra_css %}
-    <link href="../../../static/css/weather.css" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/weather.css' %}" type="text/css" rel="stylesheet">
 {% endblock %}
 {% block content %}
 <div class="container-fluid" style="padding: 5%;">
@@ -33,12 +34,14 @@
             {% endif %}
         </div>
         <div class="col">
+            {% if weather %}
             <div>
-                <iframe src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat={{ weather.coordlat }}&lon={{ weather.coordlon }}&zoom=5" 
+                <iframe class="embed-responsive" src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat={{ weather.coordlat }}&lon={{ weather.coordlon }}&zoom=5" 
                 frameborder="0"
                 width="500" height="500"
                 ></iframe>
             </div>
+            {% endif %}
             {% if alerts %}
             <h1 class="display-5">Alerts</h1>
             {% else %}
@@ -49,8 +52,10 @@
 {% if team %}
 <div class="tickets-box container-fluid text-white">
     <div class="tickets text-center">
-        <h1>View Tickets for the {{ team|capfirst }}</h1>
-        <a href="https://www.mlb.com/{{ team }}/tickets/single-game-tickets" target="_blank">{{ weather.city }} {{ team|capfirst }}</a>
+        
+        <a href="https://www.mlb.com/{{ team }}/tickets/single-game-tickets" target="_blank">
+            <h1>View Tickets for the <img src="{% static abbr %}" alt="{{ team }}" class="team-thumb">{{ team|capfirst }}</h1>
+        </a>
     </div>
 </div>
 
