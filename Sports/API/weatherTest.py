@@ -25,6 +25,6 @@ def run():
     assert ctx['weather']['city'] == 'Philadelphia', \
      f"Expected Philadelphia, got: {ctx['weather']['city']}"
 
-     print(f"SUCCESS")
+    print(f"SUCCESS")
 
 run()
