@@ -73,12 +73,11 @@
 	.shell{
 		display: flex;
 		flex-wrap: wrap;
-
 	}
 	.shell{
 		display: grid;
 		margin: 0 auto;
-		grid-template-columns: repeat(auto-fill, 475px);
+		grid-template-columns: repeat(auto-fill, 500px);
   		grid-auto-rows: minmax(225px, auto);
 		justify-content: center;	
 	}
@@ -98,7 +97,7 @@
 	.box_scores {
 		display: grid;
 		grid-gap: 5px;
-		grid-template-columns: 150px 150px 150px;
+		grid-template-columns: 150px 175px 150px;
 		grid-template-rows: auto auto;
   		background-color: #1e1a1a;
 		border-radius: 10px;	
@@ -108,16 +107,16 @@
  		border: 3px solid rgb(70,70,70);
 		padding: 10px;
   		font-size: 25px;
-  		text-align: center;
-		/*word-wrap: break-word;*/			
+		align-items: center;
+		justify-content: center;
+		display:flex;
 		text-transform: uppercase;
-   		justify-content: center;
 		overflow:hidden;
 		text-overflow: ellipsis;
 		
 	}
 	.box:hover{
-		ovrflow: visible;
+		overflow: visible;
 	}
 	.logo{
 		width: 150px;
@@ -125,12 +124,13 @@
 	}
 
 	.home_name{
+		padding-left:25px;
   		grid-column:2;
   		grid-row:1;
-		
 	}
 	.away_name{
-  		grid-column:2;
+		padding-left:25px;
+		grid-column:2;
   		grid-row:2;
 			}
 	.home_score{
