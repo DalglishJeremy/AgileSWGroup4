@@ -59,9 +59,11 @@ def populateBoxScores(date):
 				away_name = game["away_name"],
 				away_abbr = game["away_abbr"],
 				away_score = game["away_score"],
+				away_logo_path = "BaseballLogos/" + game["away_abbr"] + ".png",
 				home_name = game["home_name"],
 				home_abbr = game["home_abbr"],
 				home_score = game["home_score"], 
+				home_logo_path = "BaseballLogos/" + game["home_abbr"] + ".png",
 				winning_name = game["winning_name"],
 				winning_abbr = game["winning_abbr"],
 				losing_name = game["losing_name"],
@@ -70,14 +72,14 @@ def populateBoxScores(date):
 
 	return dateString
 
-
+# error with names including spaces
 def cityToTeam(city):
 	teamname = {}
 	dat = json.load(open("static\data\mlbteammappings.json"))
 	for team in dat["team_all"]["queryResults"]["row"]:
 		if team["city"] == city.capitalize():
 			teamname['name'] = team["name"]
-			teamname['abbr'] = team["name_abbrev"]
+			teamname['abbr'] = f"BaseballLogos/{team['name_abbrev']}.png"
 		
 	
 	return teamname
