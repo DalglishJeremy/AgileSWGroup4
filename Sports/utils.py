@@ -73,13 +73,12 @@ def populateBoxScores(date):
 	return dateString
 
 # error with names including spaces
-def cityToTeam(city):
-	teamname = {}
+def cityToTeams(city):
+	teams = {}
 	dat = json.load(open("static\data\mlbteammappings.json"))
 	for team in dat["team_all"]["queryResults"]["row"]:
-		if team["city"] == city.capitalize():
-			teamname['name'] = team["name"]
-			teamname['abbr'] = f"BaseballLogos/{team['name_abbrev']}.png"
-		
+		if team["city"] == city.title():
+			teams[team["name"]] = f"BaseballLogos/{team['name_abbrev']}.png"
+			#print(f"{team['name']} -> BaseballLogos/{team['name_abbrev']}.png")
 	
-	return teamname
+	return teams
