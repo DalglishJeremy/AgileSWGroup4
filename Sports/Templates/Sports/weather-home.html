@@ -42,15 +42,12 @@
                 ></iframe>
             </div>
             {% endif %}
-            {% if alerts %}
-            <h1 class="display-5">Alerts</h1>
-            {% else %}
-            {% endif %}
         </div>
     </div>
 </div>
-{% if team %}
-<div class="tickets-box container-fluid text-white">
+{% if teams %}
+{% for team, abbr in teams %}
+<div class="tickets-box container text-white">
     <div class="tickets text-center">
         
         <a href="https://www.mlb.com/{{ team }}/tickets/single-game-tickets" target="_blank">
@@ -58,7 +55,7 @@
         </a>
     </div>
 </div>
-
+{% endfor %}
 {% else %}
 {% endif %}
 {% endblock %}
