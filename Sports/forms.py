@@ -1,6 +1,8 @@
 from django.forms import ModelForm, TextInput
 from .models import City
 from django import forms
+import datetime
+
 
 class CityForm(ModelForm):
     class Meta:

@@ -40,6 +40,10 @@ def BaseballPage(request):
     mlbGames = MlbBoxScoreData.objects.filter(date_played=date_string)
     context['mlbGames'] = mlbGames
     context['datePlayed'] = date_string
+    if mlbGames:
+        context['GamesPlayed'] = True
+    else:
+        context['GamesPlayed'] = False
     return render(request, 'Sports/baseball.html', context)
 
 def Home(request):
