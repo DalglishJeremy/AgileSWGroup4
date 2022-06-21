@@ -21,6 +21,11 @@ def getNews(input_value):
                                       )
 
     articles = all_articles['articles']
+
+    if not (articles):
+        context = {'mylist': 'empty'}
+        return context
+
     length = len(articles)
     desc =[]
     title =[]

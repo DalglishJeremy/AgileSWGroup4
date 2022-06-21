@@ -20,7 +20,7 @@
                 <form type="get" action="{% url 'News_search' %}" style="float: right;">
                     <div>
                         <input  class="form-control" id="search_box" type="text" name="search_box"  placeholder="Search...">
-                        <button class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" id="search_submit" type="submit" style="background-color: #28a745;">Submit</button>
+                        <button class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" id="search_submit" type="submit" style="background-color: #6c757d;">Submit</button>
                     </div>
                 </form>
             </div>
@@ -39,28 +39,34 @@
                 </label>
               </div>
         </div>
-        {% for title, desc, pic, url, source, date in mylist %}
-            {% if forloop.counter0|divisibleby:2 %}
-            <div class="row text-center mt-5">
-            {%  endif %}
-                <div class="col-lg-6">
-                    <div class="position-relative mb-3">
-                        <img class="img w-100 h-100"  src="{{ pic }}" style="object-fit: cover;">
-                        <div class="bg-white border border-top-0 p-4">
-                            <div class="mb-2">
-                                <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" style="background-color: #28a745;"
-                                    href="{{url}}">{{source}}</a>
-                                <a class="text-body"><small>{{date}}</small></a>
+        {% if mylist == 'empty' %}
+            <div class="px-3 pt-5 my-5 text-center">
+                <h1 class="display-5">No Results Found</h1>
+            </div>
+        {% else %}
+            {% for title, desc, pic, url, source, date in mylist %}
+                {% if forloop.counter0|divisibleby:2 %}
+                <div class="row text-center mt-5">
+                {%  endif %}
+                    <div class="col-lg-6">
+                        <div class="position-relative mb-3">
+                            <img class="img w-100 h-100"  src="{{ pic }}" style="object-fit: cover;">
+                            <div class="bg-white border border-top-0 p-4">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" style="background-color: #6c757d;"
+                                        href="{{url}}">{{source}}</a>
+                                    <a class="text-body"><small>{{date}}</small></a>
+                                </div>
+                                    <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{url}}">{{ title }}</a>
+                                    <p class="m-0" >{{ desc }}</p>
                             </div>
-                                <a class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold" href="{{url}}">{{ title }}</a>
-                                <p class="m-0" >{{ desc }}</p>
                         </div>
                     </div>
-                </div>
-        {%  if forloop.counter|divisibleby:2 or forloop.last %}
-            </div><hr>
+            {%  if forloop.counter|divisibleby:2 or forloop.last %}
+                </div><hr>
+            {%  endif %}
+            {%  endfor %}
         {%  endif %}
-        {%  endfor %}
     </div><!-- container -->
     <footer class="footer">
     </footer>

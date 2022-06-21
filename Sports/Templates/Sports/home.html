@@ -1,86 +1,37 @@
 {% extends 'base.html' %}
-
+{% block title %}HOME | Sports | News | Weather{% endblock %}
+{% load static %}
+{% block extra_css %}
+    <link href="{% static 'css/home.css' %}" type="text/css" rel="stylesheet">
+{% endblock %}
 {% block content %}
 
-<head>
-    <style>
-    h1 {
-      font-family: sans-serif;
-      margin: 100px auto;
-      color: #1faa1f;
-      text-align: center;
-      font-size: 30px;
-      max-width: 700px;
-      position: relative;
-    }
-    h1:before {
-      content: "";
-      display: block;
-      width: 130px;
-      height: 5px;
-      background: #191970;
-      left: 0;
-      top: 50%;
-      position: absolute;
-    }
-    h1:after {
-      content: "";
-      display: block;
-      width: 130px;
-      height: 5px;
-      background: #191970;
-      right: 0;
-      top: 50%;
-      position: absolute;
-    }
-  </style>
-  </head>
-<body> 
-    <div style="text-align: center;">
-    <img src = "https://cdn.discordapp.com/attachments/974390914409709630/982053715886354514/AgileSWGroup4Logo.png" alt="no logo"
-        width="240"
-        height="140"/>
-        <figcaption font-size="21"> Front Row Home Page</figcaption>
+<div class="container-fluid">
+    <div class="px-4 pt-5 my-5 text-center">
+        <h1 class="display-4 fw-bold">Placeholder Sports&trade;</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">
+            Welcome to Placeholder Sports&trade;! Here you can view baseball scores, browse relevant news, and see current weather. 
+            Use this site to plan your next trip to the park!
+          </p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            <!-- <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button> -->
+            <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> -->
+          </div>
+        </div>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+          <div class="container px-5">
+            <img src="https://cdn.discordapp.com/attachments/974390914409709630/982053715886354514/AgileSWGroup4Logo.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="SportsNewsWeather" width="700" height="500" loading="lazy">
+          </div>
+        </div>
+      </div>
+</div>
+<footer class="page-footer">
+    <div class="footer-copyright text-center py-3">
+        <a href="https://github.com/DalglishJeremy/AgileSWGroup4" target="_blank">
+            <img src="{% static 'data/imgs/GitHub-Mark-Light-32px.png' %}" alt="">
+        </a>
     </div>
-    <div id="banner" style="overflow: hidden;justify-content:space-around;">
-        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
-            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986407014714458152/Weather_page_screenshot.png" alt="No Picture:("
-            width="400"
-            height="200" />
-            <figcaption>Front Row Sports</figcaption>
-        </div>
-        
-        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
-            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986419399491727450/beisbol.jpg" alt="No Picture:("
-            width="400"
-            height="200" />
-            <figcaption> Front Row Baseball</figcaption>
-        </div>
-        
-        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
-            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986419399164563486/basketbol_2.jpg" alt="No Picture:("
-            width="350"
-            height="200" />
-            <figcaption> Front Row Basketball</figcaption>
-        </div>
-        
-        <div class="" style="max-width: 20%;max-height: 20%;display: inline-block;">
-            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986417903412854854/Screenshot_115.png" alt="No Picture:("
-            width="400"
-            height="200" />
-            <figcaption> Front Row News </figcaption>
-        </div>
-        
-        <div class="" style="max-width: 20%;max-height: 50%;display: inline-block;">
-            <img src="https://cdn.discordapp.com/attachments/974390914850119752/986407014714458152/Weather_page_screenshot.png" alt="No Picture:("
-            width="400"
-            height="200" />
-            <figcaption>   Front Row Weather</figcaption>
-        </div>
-    </div>
-
-    <h1> Welcome to Front Row Sports! </h1>
-
-</body>
-
+</footer>
+>>>>>>> main
 {% endblock %}

@@ -28,21 +28,31 @@ How to set yourself up to use Django:
 If you don't have python installed, you're gonna have to do that first.
 
 Then navigate to whichever folder you would like to work in from powershell if you are on windows
-```
-python -m venv env
 
-env\Scripts\Activate
-
-pip install django
-```
 ```bash
 git clone https://github.com/DalglishJeremy/AgileSWGroup4.git
 
 cd AgileSWGroup4
 ```
+
+```
+python -m venv env
+
+env\Scripts\Activate
+
+pip install -r requirements.txt
+```
+
+## Migrating
+
+Django Database requires migrating from time to time to sync
+```
+resetmigrations.sh
+python manage.py migrate
+```
+## Launching Site
 From there you should be good to go, you can enter the repository, and run 
 ```bash
 python manage.py runserver 
 ```
 to run the django site locally, at the moment there isn't anything developed. Going to the local address /sports will take you to a basic html page, going to /admin will take you to Django's default admin page 
-
