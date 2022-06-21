@@ -6,7 +6,7 @@
 	<style>
 
 	body{
-		background-image: url("https://images.unsplash.com/photo-1471295253337-3ceaaedca402?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1168&q=80");
+		background-image: url("../../static/data/imgs/bball_court.jpg");
 		height:500px;
 
 		background-attachment: fixed;
@@ -38,13 +38,13 @@
 				<img class="box logo" src="{% static game.home_logo_path %}">
 				<img class="box logo" src="{% static game.away_logo_path %}">
 				<div class="box home_name"style="background-color:ForestGreen;">{{game.home_name}}</div>
-				<div class="box away_name">{{game.away_name}}</div>
+				<div class="box away_name">{{game.away_abbr}}</div>
 				<div class="box home_score"style="background-color:ForestGreen;"> {{game.home_score}}</div>
 				<div class="box away_score">{{game.away_score}}</div>
 			{% elif  game.away_score > game.home_score %}
 				<img class="box logo" src="{% static game.home_logo_path %}">
 				<img class="box logo" src="{% static game.away_logo_path %}">	    
-				<div class="box home_name">{{game.home_name}}</div>
+				<div class="box home_name">{{game.home_abbr}}</div>
 				<div class="box away_name"style="background-color:ForestGreen;">{{game.away_name}}</div>
 				<div class="box home_score">{{game.home_score}}</div>
 				<div class="box away_score" style="background-color:ForestGreen;"> {{game.away_score}}</div>
