@@ -3,10 +3,11 @@ from time import time
 from django.shortcuts import render
 from .models import *
 from .utils import *
+from .utils_nba import *
 from Sports.newsApi import getNews
 import requests
 from .models import City
-from .forms import CityForm, BaseballDateForm
+from .forms import CityForm, BaseballDateForm, BasketballDateForm
 import datetime
 from Sports.API.weatherAPI import fetchWeather
 
@@ -46,6 +47,27 @@ def BaseballPage(request):
         context['GamesPlayed'] = False
     return render(request, 'Sports/baseball.html', context)
 
+
+def BasketballPage(request):
+    context = {}
+    context['form'] = BasketballDateForm()
+    
+    if request.GET:
+        temp = request.GET['date_field']
+        date_string = populateNBABoxScores(temp)
+    else:
+        date_string = populateBoxScoresDefaultNBA()
+
+    nbaGames = NbaBoxScoreData.objects.filter(date_played=date_string)
+    context['nbaGames'] = nbaGames
+    context['datePlayed'] = date_string
+    if nbaGames:
+        context['GamesPlayed'] = True
+    else:
+        context['GamesPlayed'] = False
+    return render(request, 'Sports/basketball.html', context)
+
+
 def Home(request):
     return render(request, 'Sports/home.html')
 
@@ -70,6 +92,3 @@ def NewsHome_sort(request):
     
 def SportsHome(request):
     return render(request, 'Sports/sports-home.html')
-
-def BasketballPage(request):
-    return render(request, 'Sports/basketball.html')

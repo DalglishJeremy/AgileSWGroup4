@@ -8,6 +8,7 @@ def populateBoxScoresDefault():
 	yesterday = datetime.today() - timedelta(1)
 
 	games = Boxscores(yesterday)
+	
 	print(yesterday)
 
 	yesterdayString = yesterday.strftime("%#m-%#d-%Y").split(" ")[0]
@@ -72,6 +73,7 @@ def populateBoxScores(date):
 
 	return dateString
 
+
 # error with names including spaces
 def cityToTeams(city):
 	teams = {}
@@ -82,3 +84,4 @@ def cityToTeams(city):
 			#print(f"{team['name']} -> BaseballLogos/{team['name_abbrev']}.png")
 	
 	return teams
+

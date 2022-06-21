@@ -14,3 +14,6 @@ class CityForm(ModelForm):
 
 class BaseballDateForm(forms.Form):
     date_field = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+
+class BasketballDateForm(forms.Form):
+    date_field = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
