@@ -10,6 +10,7 @@ from .models import City
 from .forms import CityForm, BaseballDateForm, BasketballDateForm
 import datetime
 from Sports.API.weatherAPI import fetchWeather
+from django.http import HttpResponseRedirect
 
 def WeatherHome(request):
     dat = {}
@@ -56,7 +57,7 @@ def BasketballPage(request):
         temp = request.GET['date_field']
         date_string = populateNBABoxScores(temp)
     else:
-        date_string = populateBoxScoresDefaultNBA()
+        date_string = populateNBABoxScores("2022-06-16")
 
     nbaGames = NbaBoxScoreData.objects.filter(date_played=date_string)
     context['nbaGames'] = nbaGames
@@ -91,4 +92,4 @@ def NewsHome_sort(request):
     return render(request, 'Sports/news-home.html', context)
     
 def SportsHome(request):
-    return render(request, 'Sports/sports-home.html')
+    return HttpResponseRedirect("/Sports/Baseball")
